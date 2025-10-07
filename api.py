@@ -2,8 +2,9 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List, Any
 
-app = FastAPI()
+app = FastAPI(title="AI Labor Truth Engine API")
 
+# ---- Schemas ----
 class DiscoverReq(BaseModel):
     trend_window_hours: int
     max_items: int
@@ -35,9 +36,9 @@ class CiteReq(BaseModel):
     sources: List[Any]
     max_citations: int
 
+# ---- Endpoints (stubbed; replace with real logic later) ----
 @app.post("/discover_topics")
 def discover_topics(req: DiscoverReq):
-    # TODO: replace with real scrapers/APIs
     return {"items":[
         {"claim":"AI eliminated 30% of entry-level marketing jobs",
          "source_hint":["news","X"], "evidence_status":"unclear",
